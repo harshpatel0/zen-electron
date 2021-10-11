@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="custom.css" />
+    <title>Zen: Pomodoro Focus Timer</title>
+  </head>
+  <body id="body" class="light">
+    <nav style="justify-content: center; text-align: center">
+      <figure class="md:flex rounded-xl p-8 md:p-0">
+        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+          <figcaption>
+            <blockquote>
+              <p class="text-4xl font-bold">
+                <a href="app.html"
+                  > <span class="hover:underline pl-1 pr-1">Zen</span></a
+                >
+              </p>
+              <p class="text-lg font-light">Pomodoro Focus Timer</p>
+            </blockquote>
+          </figcaption>
+        </div>
+      </figure>
+    </nav>
+
+    <div id="timerComponent">
+      <p class="font-bold text-7xl md:text-8xl lg:text-9xl text-center mt-12">
+        {{ countdown }}
+      </p>
+
+      <div class="text-center">
+        <button
+          v-on:click="startFocus"
+          class="
+            bg-red-500
+            hover:bg-red-400
+            font-semibold
+            text-white
+            p-2
+            m-2
+            border border-red-500
+            hover:border-red-400
+            rounded-md
+            mt-8
+            flex-auto
+            text-lg
+            md:text-xl
+          "
+        >
+          Focus Time
+        </button>
+        <button
+          v-on:click="startShortBreak"
+          class="
+            bg-blue-400
+            hover:bg-blue-300
+            font-semibold
+            text-white
+            p-2
+            m-2
+            border border-blue-400
+            hover:border-blue-300
+            rounded-md
+            mt-8
+            flex-auto
+            text-lg
+            md:text-xl
+          "
+        >
+          Short Break
+        </button>
+        <button
+          v-on:click="startLongBreak"
+          class="
+            bg-blue-500
+            hover:bg-blue-400
+            font-semibold
+            text-white
+            p-2
+            m-2
+            border border-blue-500
+            hover:border-blue-400
+            rounded-md
+            mt-8
+            flex-auto
+            text-lg
+            md:text-xl
+          "
+        >
+          Long Break
+        </button>
+      </div>
+
+      <p class="text-center font-semibold text-lg">{{ status }}</p>
+
+      <p class="text-center m-3">{{ description }}</p>
+
+  <script defer src="scripts/vue.js"></script>
+  <script defer src="scripts/push.js"></script>
+  <script defer src="scripts/main.js"></script>
+</html>
