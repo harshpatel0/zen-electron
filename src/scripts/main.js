@@ -116,16 +116,20 @@ var timer = new Vue({
 
 // Timer code ends here
 
-const body = document.getElementById("body");
+function applyColourScheme() {
+  const body = document.getElementById("body");
 
-const preferredColourScheme = window.matchMedia(
-  "(prefers-color-scheme: light)"
-);
+  const preferredColourScheme = window.matchMedia(
+    "(prefers-color-scheme: light)"
+  );
 
-if (preferredColourScheme.matches) {
-  body.classList.remove("dark");
-  body.classList.add("light");
-} else {
-  body.classList.remove("light");
-  body.classList.add("dark");
+  if (preferredColourScheme.matches) {
+    body.classList.remove("dark");
+    body.classList.add("light");
+  } else {
+    body.classList.remove("light");
+    body.classList.add("dark");
+  }
 }
+
+applyColourScheme();
