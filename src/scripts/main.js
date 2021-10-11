@@ -1,25 +1,3 @@
-// All of this is the timer code
-
-function format(time) {
-  // Hours, minutes and seconds
-  var mins = ~~((time % 3600) / 60);
-  var secs = ~~time % 60;
-
-  // Output like "1:01" or "4:03:59" or "123:03:59"
-  var ret = "";
-  ret += "" + mins + ":" + (secs < 10 ? "0" : "");
-  ret += "" + secs;
-  return ret;
-}
-
-function wait(ms) {
-  var start = new Date().getTime();
-  var end = start;
-  while (end < start + ms) {
-    end = new Date().getTime();
-  }
-}
-
 var timerWorker = new Worker("scripts/timer.js");
 
 var timer = new Vue({
@@ -31,6 +9,7 @@ var timer = new Vue({
   },
 
   methods: {
+    // Function for the Focus Time thingi
     startFocus: function () {
       const focusTime = 1500;
 
@@ -41,6 +20,9 @@ var timer = new Vue({
 
       timerWorker.postMessage(1500);
       tempTime = 1500;
+
+      // Once it gets the message back, it subtracts the time and sends it back as well as
+      // updating the timer on screen
 
       countdown = timerWorker.onmessage = function (oEvent) {
         if (tempTime == 0) {
@@ -63,6 +45,8 @@ var timer = new Vue({
         timer.countdown = oEvent.data;
       };
     },
+
+    // Function for the short break thingi
     startShortBreak: function () {
       const shortBreak = 300;
 
@@ -73,8 +57,6 @@ var timer = new Vue({
 
       timerWorker.postMessage(300);
       tempTime = 300;
-
-      // 300
 
       countdown = timerWorker.onmessage = function (oEvent) {
         if (tempTime == 0) {
@@ -97,6 +79,8 @@ var timer = new Vue({
         timer.countdown = oEvent.data;
       };
     },
+
+    // Function for the long break thingi
     startLongBreak: function () {
       const longBreak = 900;
       this.status = "Time to take a nice long break!";
