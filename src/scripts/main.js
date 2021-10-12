@@ -3,9 +3,13 @@ const defaultShortBreakTime = 300;
 const defaultLongBreakTime = 900;
 
 // Timings
-var focusTime = 1500; // 25 Minutes, default is 1500
-var shortBreakTime = 300; // 5 Minutes, default is 300
-var longBreakTime = 900; // 15 Minutes, default is 900
+var focusTime = localStorage.getItem("focusTime"); // 25 Minutes, default is 1500
+var shortBreakTime = localStorage.getItem("shortBreakTime"); // 5 Minutes, default is 300
+var longBreakTime = localStorage.getItem("longBreakTime"); // 15 Minutes, default is 900
+
+console.log(focusTime);
+console.log(shortBreakTime);
+console.log(longBreakTime);
 
 const timerWorker = new Worker("scripts/timer.js");
 
@@ -100,19 +104,6 @@ var timer = new Vue({
         timer.countdown = oEvent.data;
       };
     },
-
-    changeTimings: function (newTime, type) {
-      if (type == 0) {
-        focusTime == newTime;
-        localStorage.setItem("focusTime", newTime);
-      } else if (type == 1) {
-        shortBreakTime == newTime;
-        localStorage.setItem("shortBreakTime", newTime);
-      } else if (type == 2) {
-        longBreakTime == newTime;
-        localStorage.setItem("longBreakTime", newTime);
-      }
-    },
   },
 });
 
@@ -139,20 +130,16 @@ function loadTimings() {
   shortBreakTime = localStorage.getItem("shortBreakTime");
   longBreakTime = localStorage.getItem("longBreakTime");
 
-  // If the LocalStorage returns null, default values are used and stored in LocalStorage
-  if (focusTime | shortBreakTime | (longBreakTime == null)) {
-    focusTime = defaultFocusTime;
-    shortBreakTime = defaultShortBreakTime;
-    longBreakTime = longBreakTime;
+  console.log(localStorage);
 
-    localStorage.setItem("focusTime", focusTime);
-    localStorage.setItem("shortBreakTime", shortBreakTime);
-    localStorage.setItem("longBreakTime", longBreakTime);
+  // If the LocalStorage returns null, default values are used and stored in LocalStorage
+  if (localStorage.length == 0) {
+    console.log("Rebuilding LocalStorage");
+    localStorage.setItem("focusTime", 1500);
+    localStorage.setItem("shortBreakTime", 300);
+    localStorage.setItem("longBreakTime", 900);
   }
 }
 
-window.onload = function () {
-  console.log("Loaded");
-  applyColourScheme();
-  loadTimings();
-};
+applyColourScheme();
+loadTimings();
