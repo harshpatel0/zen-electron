@@ -2,6 +2,11 @@ const defaultFocusTime = 1500;
 const defaultShortBreakTime = 300;
 const defaultLongBreakTime = 900;
 
+// Timings
+var focusTime = 1500; // 25 Minutes, default is 1500
+var shortBreakTime = 300; // 5 Minutes, default is 300
+var longBreakTime = 900; // 15 Minutes, default is 900
+
 const timerWorker = new Worker("scripts/timer.js");
 
 var sentNotification = false;
@@ -13,11 +18,6 @@ var timer = new Vue({
     countdown: "0:00",
     status: "Start a new topic, project or what have you",
     description: "Press one of these button to start the timer",
-
-    // Timings
-    focusTime: 1500, // 25 Minutes, default is 1500
-    shortBreakTime: 300, // 5 Minutes, default is 300
-    longBreakTime: 900, // 15 Minutes, default is 900
   },
 
   methods: {
@@ -30,19 +30,19 @@ var timer = new Vue({
         this.status = "Time to focus!";
         this.description =
           "This is the best time to start what you need to get done as you are more focused after breaks or when starting to focus";
-        var time = this.focusTime;
+        var time = focusTime;
       }
       if (type == 1) {
         this.status = "Time to take a short break!";
         this.description =
           "Do some stretches or some exercises, or just cool your mind down";
-        var time = this.shortBreakTime;
+        var time = shortBreakTime;
       }
       if (type == 2) {
         this.status = "Time to take a nice long break!";
         this.description =
           "Sometimes you need a longer break, use this time to get something done, if you are going to use your phone, don't get distracted by it";
-        var time = this.longBreakTime;
+        var time = longBreakTime;
       }
 
       timerWorker.postMessage(time);
@@ -101,7 +101,18 @@ var timer = new Vue({
       };
     },
 
-    changeTimings: function (newTime, type) {},
+    changeTimings: function (newTime, type) {
+      if (type == 0) {
+        focusTime == newTime;
+        localStorage.setItem("focusTime", newTime);
+      } else if (type == 1) {
+        shortBreakTime == newTime;
+        localStorage.setItem("shortBreakTime", newTime);
+      } else if (type == 2) {
+        longBreakTime == newTime;
+        localStorage.setItem("longBreakTime", newTime);
+      }
+    },
   },
 });
 
@@ -122,5 +133,26 @@ function applyColourScheme() {
     body.classList.add("dark");
   }
 }
+function loadTimings() {
+  // Loads timings from LocalStorage
+  focusTime = localStorage.getItem("focusTime");
+  shortBreakTime = localStorage.getItem("shortBreakTime");
+  longBreakTime = localStorage.getItem("longBreakTime");
 
-applyColourScheme();
+  // If the LocalStorage returns null, default values are used and stored in LocalStorage
+  if (focusTime | shortBreakTime | (longBreakTime == null)) {
+    focusTime = defaultFocusTime;
+    shortBreakTime = defaultShortBreakTime;
+    longBreakTime = longBreakTime;
+
+    localStorage.setItem("focusTime", focusTime);
+    localStorage.setItem("shortBreakTime", shortBreakTime);
+    localStorage.setItem("longBreakTime", longBreakTime);
+  }
+}
+
+window.onload = function () {
+  console.log("Loaded");
+  applyColourScheme();
+  loadTimings();
+};
