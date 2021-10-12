@@ -15,7 +15,7 @@ var timer = new Vue({
     description: "Press one of these button to start the timer",
 
     // Timings
-    focusTime: 1, // 25 Minutes, default is 1500
+    focusTime: 1500, // 25 Minutes, default is 1500
     shortBreakTime: 300, // 5 Minutes, default is 300
     longBreakTime: 900, // 15 Minutes, default is 900
   },
@@ -100,6 +100,8 @@ var timer = new Vue({
         timer.countdown = oEvent.data;
       };
     },
+
+    changeTimings: function (newTime, type) {},
   },
 });
 
