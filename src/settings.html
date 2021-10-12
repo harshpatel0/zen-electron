@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/custom.css" />
+    <title>Zen: Pomodoro Focus Timer</title>
+  </head>
+  <body id="body" class="light">
+    <nav style="justify-content: center; text-align: center">
+      <figure class="md:flex rounded-xl p-8 md:p-0">
+        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+          <figcaption>
+            <blockquote>
+              <p class="text-4xl font-bold">
+                <a href="app.html"
+                  > <span class="hover:underline pl-1 pr-1">Zen</span></a
+                >
+              </p>
+              <p class="text-lg font-lighter"><a onclick="history.back(-1)" style="font-weight: bolder;" class="text-grey-200 hover:text-white">&lt</a>&nbsp&nbsp Settings</p>
+            </blockquote>
+          </figcaption>
+        </div>
+      </figure>
+    </nav>
+
+    <div id="settings">
+      <div class="flex flex-auto card space-y-4 bg-base-200">
+        <div style="padding-bottom: 20px; padding-left: 20px;" class="space-y-4">
+          <label class="">
+            <span class="text-2xl py-2 font-bold">Focus Time: <span class="font-light">{{ focusTime }}</span></span>
+          </label> 
+          <input id="focusTimeInput" onchange="changeValue(0)" placeholder="1500" class="border-2 max-w-lg py-1 mx-1.5 block rounded-md bg-gray-700 hover:bg-red-500 hover:border-red-400" type="number">
+        </div>
+      </div>
+      <div style="padding-bottom: 20px; padding-left: 20px;" class="space-y-4 flex flex-auto card bg-base-200">
+        <div class="">
+          <label class="">
+            <span class="text-2xl font-bold ">Short Break Time: <span class="font-light">{{ shortBreakTime }}</span></span>
+          </label> 
+          <input id="shortBreakTimeInput" onchange="changeValue(1)" placeholder="300" class="border-2 max-w-lg py-1 mx-1.5 block rounded-md bg-gray-700 hover:bg-blue-400 hover:border-blue-300" type="number">
+        </div>
+      </div>
+
+      <div style="padding-bottom: 20px; padding-left: 20px;" class="flex flex-auto space-y-4 card bg-base-200">
+        <div class="space-y-4">
+          <label class="">
+            <span class="text-2xl font-bold">Long Break Time: <span class="font-light">{{ longBreakTime }}</span></span>
+          </label> 
+          <input id="longBreakTimeInput" onchange="changeValue(2)" placeholder="900" class="border-2 max-w-lg py-1 mx-1.5 block rounded-md bg-gray-700 hover:bg-blue-500 hover:border-blue-400" type="number">
+        </div>
+      </div>
+    </div>
+
+    <p class="pl-2">Units are in <span class="font-semibold">milliseconds</span></p>
+    <p class="pl-2">Changes are <span class="font-semibold">autosaved</span></p>
+
+  <script defer src="scripts/vue.js"></script>
+  <script defer src="scripts/settings.js"></script>
+</html>
