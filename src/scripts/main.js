@@ -21,6 +21,10 @@ var timer = new Vue({
   },
 
   methods: {
+    // Type 1 = Focus Timer
+    // Type 2 = Short Break
+    // Type 3 = Long Break
+
     startTimer: function (type) {
       if (type == 0) {
         this.status = "Time to focus!";
