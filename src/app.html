@@ -33,7 +33,7 @@
 
       <div class="text-center">
         <button
-          v-on:click="startFocus"
+          v-on:click="startTimer(0)"
           class="
             bg-red-500
             hover:bg-red-400
@@ -53,7 +53,7 @@
           Focus Time
         </button>
         <button
-          v-on:click="startShortBreak"
+          v-on:click="startTimer(1)"
           class="
             bg-blue-400
             hover:bg-blue-300
@@ -73,7 +73,7 @@
           Short Break
         </button>
         <button
-          v-on:click="startLongBreak"
+          v-on:click="startTimer(2)"
           class="
             bg-blue-500
             hover:bg-blue-400
