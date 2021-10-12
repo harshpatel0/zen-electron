@@ -9,7 +9,9 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "minify": "npx tailwindcss -m -o src/styles/styles.css",
+    "tailwind": "npx tailwindcss -o src/styles/styles.css"
   },
   "keywords": [],
   "author": "Harsh Patel",
@@ -42,6 +44,7 @@
     }
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.3.4",
     "electron-builder": "^22.13.1",
     "electron-squirrel-startup": "^1.0.0"
   },
