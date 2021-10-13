@@ -18,7 +18,7 @@ var settings = new Vue({
 function changeValue(type) {
   if (type == 0) {
     var value = document.getElementById("focusTimeInput").value;
-    console.log(value);
+    // console.log(value);
     settings.focusTime = value;
     focusTime = value;
     localStorage.setItem("focusTime", value);
@@ -26,7 +26,7 @@ function changeValue(type) {
   if (type == 1) {
     var value = document.getElementById("shortBreakTimeInput").value;
 
-    console.log(value);
+    // console.log(value);
     settings.shortBreakTime = value;
     shortBreakTime = value;
     localStorage.setItem("shortBreakTime", value);
@@ -34,14 +34,14 @@ function changeValue(type) {
   if (type == 2) {
     var value = document.getElementById("longBreakTimeInput").value;
 
-    console.log(value);
+    // console.log(value);
     settings.longBreakTime = value;
     longBreakTime = value;
     localStorage.setItem("longBreakTime", value);
   }
-  console.log(focusTime);
-  console.log(shortBreakTime);
-  console.log(longBreakTime);
+  // console.log(focusTime);
+  // console.log(shortBreakTime);
+  // console.log(longBreakTime);
 }
 
 function applyColourScheme() {
@@ -65,7 +65,7 @@ function loadTimings() {
   shortBreakTime = localStorage.getItem("shortBreakTime");
   longBreakTime = localStorage.getItem("longBreakTime");
 
-  console.log(localStorage);
+  // console.log(localStorage);
 
   // If the LocalStorage returns null, default values are used and stored in LocalStorage
   if (localStorage.length == 0) {
@@ -79,6 +79,6 @@ function loadTimings() {
 applyColourScheme();
 loadTimings();
 
-console.log(focusTime);
-console.log(shortBreakTime);
-console.log(longBreakTime);
+// console.log(focusTime);
+// console.log(shortBreakTime);
+// console.log(longBreakTime);

@@ -7,9 +7,9 @@ var focusTime = localStorage.getItem("focusTime"); // 25 Minutes, default is 150
 var shortBreakTime = localStorage.getItem("shortBreakTime"); // 5 Minutes, default is 300
 var longBreakTime = localStorage.getItem("longBreakTime"); // 15 Minutes, default is 900
 
-console.log(focusTime);
-console.log(shortBreakTime);
-console.log(longBreakTime);
+// console.log(focusTime);
+// console.log(shortBreakTime);
+// console.log(longBreakTime);
 
 const timerWorker = new Worker("scripts/timer.js");
 
@@ -66,9 +66,9 @@ var timer = new Vue({
             var temp = "temp";
           } else {
             if (type == 0) {
-              console.log(sentNotification);
+              // console.log(sentNotification);
               sentNotification = true;
-              console.log(sentNotification);
+              // console.log(sentNotification);
 
               Push.create("Focus Time is over", {
                 body: "Focus time is over, go back to the app to start your short break, if this is your 4th Focus Time, start a long break",
@@ -130,7 +130,7 @@ function loadTimings() {
   shortBreakTime = localStorage.getItem("shortBreakTime");
   longBreakTime = localStorage.getItem("longBreakTime");
 
-  console.log(localStorage);
+  // console.log(localStorage);
 
   // If the LocalStorage returns null, default values are used and stored in LocalStorage
   if (localStorage.length == 0) {
