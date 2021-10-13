@@ -92,3 +92,8 @@ out/
 build/
 build/zen-win32-x64/
 build/zen-x64-appx/
+
+# Custom Scripts
+
+regentailwind.cmd
+minifytailwind.cmd
