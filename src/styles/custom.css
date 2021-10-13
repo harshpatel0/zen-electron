@@ -12,3 +12,8 @@ input:checked ~ .dot {
   transform: translateX(100%);
   background-color: #616161;
 }
+
+#settingsIcon {
+  filter: invert(100%) sepia(0%) saturate(14%) hue-rotate(67deg)
+    brightness(106%) contrast(102%);
+}
