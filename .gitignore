@@ -97,3 +97,8 @@ build/zen-x64-appx/
 
 regentailwind.cmd
 minifytailwind.cmd
+
+# New Builds
+
+zen-win32-x64/
+Zen-win32-x64/
